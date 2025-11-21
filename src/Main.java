@@ -61,7 +61,7 @@ class SubstituicaoOtima {
     }
 
     public static void main(String[] args) {
-        String arquivo = "6.txt";
+        String arquivo = "entrada.txt";
         int totalQuadros = 0;
         int[] paginas = null;
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
