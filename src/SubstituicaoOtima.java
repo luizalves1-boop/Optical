@@ -1,7 +1,8 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-class SubstituicaoOtima {
+public class SubstituicaoOtima {
 
     static boolean buscar(int pagina, int[] quadros) {
         for (int i = 0; i < quadros.length; i++)
