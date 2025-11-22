@@ -41,7 +41,6 @@ public class SubstituicaoOtima {
                 acertos++;
                 continue;
             }
-
             if (indiceQuadro < totalQuadros)
                 quadros[indiceQuadro++] = paginas[i];
             else {
@@ -61,13 +60,13 @@ public class SubstituicaoOtima {
         return false;
     }
 
-    static int prever(int paginas[], int[] quadros, int indiceAtual) {
+    static int prever(int paginas[], int[] quadros, int proximoIndice) {
         int indiceEscolhido = -1;
-        int maisDistante = indiceAtual;
+        int maisDistante = proximoIndice;
 
         for (int i = 0; i < quadros.length; i++) {
             int j;
-            for (j = indiceAtual; j < paginas.length; j++) {
+            for (j = proximoIndice; j < paginas.length; j++) {
                 if (quadros[i] == paginas[j]) {
                     if (j > maisDistante) {
                         maisDistante = j;
