@@ -82,10 +82,9 @@ public class SubstituicaoOtima {
             if (j == paginas.length)
                 return i;
         }
-        //Se nenhuma página futura foi encontrada, o código retorna 0
         //Se todos os números que estão no quadro atual forem ser utilizados depois ele chega aqui
         //Então, ele vai enviar qual foi o indice escolhido, levando em conta qual a utilização mais distante
-        return (indiceEscolhido == -1) ? 0 : indiceEscolhido;
+        return indiceEscolhido;
     }
 
 
