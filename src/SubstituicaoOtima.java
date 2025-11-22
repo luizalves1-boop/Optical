@@ -4,6 +4,30 @@ import java.io.IOException;
 
 public class SubstituicaoOtima {
 
+    public static void main(String[] args) {
+        String arquivo = "entrada.txt";
+        int totalQuadros = 0;
+        int[] paginas = null;
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                if (linha.startsWith("Quadros:")) {
+                    totalQuadros = Integer.parseInt(linha.substring(9));
+                } else if (linha.startsWith("Páginas:")) {
+                    String p = linha.substring(9).trim();
+                    String[] pSplit = p.split(",");
+                    paginas = new int[pSplit.length];
+                    for (int i = 0; i < paginas.length; i++) {
+                        paginas[i] = Integer.parseInt(pSplit[i]);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        substituirOtima(paginas, totalQuadros);
+    }
+
     static boolean buscar(int pagina, int[] quadros) {
         for (int i = 0; i < quadros.length; i++)
             if (quadros[i] == pagina)
@@ -61,27 +85,4 @@ public class SubstituicaoOtima {
         System.out.println("Nº de faltas = " + (paginas.length - acertos));
     }
 
-    public static void main(String[] args) {
-        String arquivo = "entrada.txt";
-        int totalQuadros = 0;
-        int[] paginas = null;
-        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
-            String linha;
-            while ((linha = br.readLine()) != null) {
-                if (linha.startsWith("Quadros:")) {
-                    totalQuadros = Integer.parseInt(linha.substring(9));
-                } else if (linha.startsWith("Páginas:")) {
-                    String p = linha.substring(9).trim();
-                    String[] pSplit = p.split(",");
-                    paginas = new int[pSplit.length];
-                    for (int i = 0; i < paginas.length; i++) {
-                        paginas[i] = Integer.parseInt(pSplit[i]);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        substituirOtima(paginas, totalQuadros);
-    }
 }
