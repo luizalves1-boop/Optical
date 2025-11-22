@@ -69,7 +69,7 @@ public class SubstituicaoOtima {
         for (int i = 0; i < quadros.length; i++) {
             int j;
             for (j = proximoIndice; j < paginas.length; j++) {//j começa a verificar a partir do próximo índice
-                if (quadros[i] == paginas[j]) {//Se ele achar alguma página próxima que seja igual à página que está sendo verificada no momento ele entra no if
+                if (paginas[j] == quadros[i]) {//Se ele achar alguma página próxima que seja igual à página que está sendo verificada no momento ele entra no if
                     if (j > maisDistante) {//Se o índice que ele achou for maior do que o índice mais distante até o momento ele entra nesse if
                         maisDistante = j; //Aqui ele vai substituir o mais distante pelo que ele encontrou agora
                         indiceEscolhido = i; //E armazenar qual é o índice do quadro em que a repetição mais distante foi encontrada
