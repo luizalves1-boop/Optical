@@ -28,6 +28,32 @@ public class SubstituicaoOtima {
         substituirOtima(paginas, totalQuadros);
     }
 
+    // Executa o algoritmo de substituição ótima
+    static void substituirOtima(int paginas[], int totalQuadros) {
+        int[] quadros = new int[totalQuadros];
+        for (int i = 0; i < quadros.length; i++) {
+            quadros[i] = -1;
+        }
+        int acertos = 0;
+        int indiceQuadro = 0;
+        for (int i = 0; i < paginas.length; i++) {
+            if (buscar(paginas[i], quadros)) {
+                acertos++;
+                continue;
+            }
+
+            if (indiceQuadro < totalQuadros)
+                quadros[indiceQuadro++] = paginas[i];
+            else {
+                int posicao = prever(paginas, quadros, i + 1);
+                quadros[posicao] = paginas[i];
+            }
+        }
+
+        System.out.println("Nº de acertos = " + acertos);
+        System.out.println("Nº de faltas = " + (paginas.length - acertos));
+    }
+
     static boolean buscar(int pagina, int[] quadros) {
         for (int i = 0; i < quadros.length; i++)
             if (quadros[i] == pagina)
@@ -59,30 +85,6 @@ public class SubstituicaoOtima {
         return (indiceEscolhido == -1) ? 0 : indiceEscolhido;
     }
 
-    // Executa o algoritmo de substituição ótima
-    static void substituirOtima(int paginas[], int totalQuadros) {
-        int[] quadros = new int[totalQuadros];
-        for (int i = 0; i < quadros.length; i++) {
-            quadros[i] = -1;
-        }
-        int acertos = 0;
-        int indiceQuadro = 0;
-        for (int i = 0; i < paginas.length; i++) {
-            if (buscar(paginas[i], quadros)) {
-                acertos++;
-                continue;
-            }
 
-            if (indiceQuadro < totalQuadros)
-                quadros[indiceQuadro++] = paginas[i];
-            else {
-                int posicao = prever(paginas, quadros, i + 1);
-                quadros[posicao] = paginas[i];
-            }
-        }
-
-        System.out.println("Nº de acertos = " + acertos);
-        System.out.println("Nº de faltas = " + (paginas.length - acertos));
-    }
 
 }
